@@ -1,0 +1,35 @@
+stack = []
+
+# Push (add element)
+stack.append(1)
+stack.append(2)
+stack.append(3)
+print(stack)  # [1, 2, 3]
+
+# Pop (remove element)
+popped = stack.pop()
+print(popped)  # 3
+print(stack)  # [1, 2]
+
+# Peek (view top element)
+top = stack[-1]
+print(top)  # 2
+
+# Check if empty
+is_empty = len(stack) == 0
+print(is_empty)  # False
+
+# Get size
+size = len(stack)
+print(size)  # 2
+
+
+# Alternative implementation using list methods:
+stack = []
+stack.extend([1, 2, 3])  # Push multiple elements
+print(stack)  # [1, 2, 3]
+stack.insert(0, 0)  # Push at specific index
+print(stack)  # [0, 1, 2, 3]
+stack.remove(2)  # Remove specific element
+print(stack)  # [0, 1, 3]
+
