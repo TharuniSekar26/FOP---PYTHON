@@ -1,0 +1,26 @@
+queue = []
+
+# Enqueue (add) elements
+queue.append(1)
+queue.append(2)
+queue.append(3)
+
+# Dequeue (remove) elements
+print(queue.pop(0))  # 1
+print(queue.pop(0))  # 2
+print(queue)  # [3]
+
+# Check if queue is empty
+if not queue:
+    print("Queue is empty")
+else:
+    print("Queue is not empty")
+
+
+# Updation (Modify existing element)
+queue[0] = 10
+print(queue)  # [10]
+
+# Insertion at specific position
+queue.insert(1, 5)
+print(queue)  # [10, 5]
