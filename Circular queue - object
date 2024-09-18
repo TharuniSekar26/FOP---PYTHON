@@ -1,0 +1,65 @@
+
+class CircularQueue:
+    def __init__(self, size):
+        self.size = size
+        self.queue = [None] * size
+        self.front = self.rear = -1
+
+    def enqueue(self, item):
+        if (self.rear + 1) % self.size == self.front:
+            print("Queue is full")
+        elif self.front == -1:
+            self.front = self.rear = 0
+            self.queue[self.rear] = item
+        else:
+            self.rear = (self.rear + 1) % self.size
+            self.queue[self.rear] = item
+
+    def dequeue(self):
+        if self.front == -1:
+            print("Queue is empty")
+        elif self.front == self.rear:
+            temp = self.queue[self.front]
+            self.front = self.rear = -1
+            return temp
+        else:
+            temp = self.queue[self.front]
+            self.front = (self.front + 1) % self.size
+            return temp
+
+    def update(self, index, item):
+        self.queue[index] = item
+
+    def insert_at(self, index, item):
+        if self.queue[index] is None:
+            self.queue[index] = item
+        else:
+            print("Position already occupied")
+
+    def print_queue(self):
+        if self.front == -1:
+            print("Queue is empty")
+        elif self.rear >= self.front:
+            print(self.queue[self.front:self.rear+1])
+        else:
+            print(self.queue[self.front:] + self.queue[:self.rear+1])
+
+
+cq = CircularQueue(5)
+cq.enqueue(1)
+cq.enqueue(2)
+cq.enqueue(3)
+cq.print_queue()  # [1, 2, 3]
+
+# Removal
+removed_element = cq.dequeue()
+print(removed_element)  # 1
+cq.print_queue()  # [2, 3]
+
+# Updation
+cq.update(0, 10)
+cq.print_queue()  # [10, 3]
+
+# Insertion at specific position
+cq.insert_at(1, 5)
+cq.print_queue()  # [10, 5, 3]
