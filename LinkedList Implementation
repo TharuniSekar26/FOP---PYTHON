@@ -1,0 +1,60 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+        
+class LinkedList:    
+    def __init__(self):
+        self.head = None
+        self.tail = None
+    def insertAtEnd(self,data):
+        newNode = Node(data)
+        if(self.head==None):
+            self.head = newNode
+            self.tail = newNode
+        else:
+            self.tail.next = newNode
+            self.tail = newNode
+    def insertAtBeginning(self,data):
+        newNode = Node(data)
+        newNode.next = self.head
+        self.head = newNode
+    def insertAtMiddle(self,prevNode,data):
+        newNode=Node(data)
+        temp = prevNode.next
+        prevNode.next = newNode
+        newNode.next = temp
+        
+    def deleteAtBegin(self):
+        self.head = self.head.next
+        
+    def deleteAtMiddle(self,ele):
+        current = self.head
+        while(current.next):
+            if(current.next.data==ele):
+                current.next = current.next.next
+                break
+            current=current.next
+    def display(self):
+        current = self.head
+        while(current):
+            print(current.data,end=" ")
+            current = current.next
+    def search(self,ele):
+        current = self.head
+        while(current):
+            if(current.data == ele):
+                return True
+            current = current.next
+        return False
+        
+ll=LinkedList()
+ll.insertAtEnd(1)
+ll.insertAtEnd(2)
+ll.insertAtEnd(3)
+
+ll.display()
+
+print(ll.search(2))
+ll.insertAtMiddle(ll.head,8)
+ll.display()
