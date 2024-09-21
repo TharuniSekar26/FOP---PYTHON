@@ -1,0 +1,43 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+class CircularLinkedList:
+    def __init__(self):
+        self.head = None
+    def isEmpty(self):
+        return self.head==None
+    def insert(self,data):
+        if(self.isEmpty()):
+            newNode = Node(data)
+            self.head = newNode
+            newNode.next = self.head
+        else:
+            newNode = Node(data)
+            curr = self.head
+            while(curr.next!=self.head):
+                curr=curr.next
+            curr.next=newNode
+            newNode.next=self.head
+    def display(self):
+        curr = self.head
+        while(true):
+            print(curr.data,end=" ")
+            curr = curr.next 
+            if(curr == self.head):
+                break
+    def deleteAtMiddle(self,ele):
+        curr = self.head
+        while(curr.next!=self.head):
+            if(curr.next.data==ele):
+                curr.next = curr.next.next
+                break
+            curr=curr.next       
+ll = CircularLinkedList()
+ll.insert(1)
+ll.insert(2)
+ll.insert(3)
+ll.display()
+ll.displayAtMiddle(2)
+print("linked list after deletion ")
+ll.display()
