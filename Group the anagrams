@@ -1,0 +1,22 @@
+
+'''
+['eat',tea,tan,ate,nat,bat]
+dict = {aet: ['eat','tea','ate'],ant:['tan','nat'],abt:['bat']}
+
+
+
+[eat,ate,tea],[tan,nat],[bat]
+
+'''
+l = list(map(str,input().split(",")))
+print(l)
+
+dict ={}
+
+for word in l:
+    sortedWord = "".join(sorted(word))
+    if sortedWord in dict:
+        dict[sortedWord].append(word)
+    else:
+        dict[sortedWord] = [word]
+print(list(dict.values()))
