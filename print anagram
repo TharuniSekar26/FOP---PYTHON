@@ -1,0 +1,13 @@
+
+
+'''
+ate = eat
+
+dharuni -- anirudh
+
+i am lord voldermart --- tom marvalo riddle
+'''
+string1 = "ate"
+string2 = "eat"
+if(sorted(string1) == sorted(string2)):
+    print("anagram")
