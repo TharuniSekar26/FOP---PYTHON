@@ -1,0 +1,20 @@
+
+ 
+'''
+ qn - abcabcbbb
+      012345678
+set - set()
+maxe = max(maxe,(i-l+1))
+maxe = 3
+'''
+string = input()
+s = set()
+l = 0
+maxValue = 0
+for i in range(len(string)):                    #abcabcbbb   set = {"a","b","c"}
+    while string[i] in s:                        
+        s.remove(string[l])
+        l+=1
+    s.add(string[i])
+    maxValue = max(maxValue,i-l+1)      
+print(maxValue)
