@@ -1,0 +1,62 @@
+from collections import deque
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+class BinaryTree:
+    def __init__(self):
+        self.root = None
+
+    def build_tree(self, values):
+        
+        self.root = Node(values[0])    
+        queue = deque([self.root])
+        i = 1
+
+        while queue and i < len(values):
+            current_node = queue.popleft()
+
+            if i < len(values):
+                current_node.left = Node(values[i])
+                queue.append(current_node.left)
+                i += 1
+
+            if i < len(values):
+                current_node.right = Node(values[i])
+                queue.append(current_node.right)
+                i += 1
+                
+    def levelOrderTraversal(self,root):
+        queue = deque([root])
+        while queue:
+            curr = queue.popleft()
+            print(curr.data,end=" ")
+            if(curr.left):
+                queue.append(curr.left)
+            if(curr.right):
+                queue.append(curr.right)
+    def preOrderTraversal(self,root):
+        if root == None:
+            return
+        print(root.data,end=" ")
+        preOrderTraversal(root.left)
+        preOrderTraversal(root.right)
+        
+     def inOrderTraversal(self,root):
+        if root == None:
+            return
+        inOrderTraversal(root.left)
+        print(root.data,end=" ")
+        inOrderTraversal(root.right)
+        
+    def postOrderTraversal(self,root):
+        if root == None:
+            return
+        postOrderTraversal(root.left)
+        postOrderTraversal(root.right)
+        print(root.data,end=" ")
+b1 = BinaryTree()
+l=[1,2,3,4,5,6,7]
+b1.build_tree(l)
+b1.levelOrderTraversal(b1.root)
